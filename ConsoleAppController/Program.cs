@@ -66,9 +66,5 @@ namespace ConsoleAppController
         //    Point p = mc.GetCursorPosition();
         //    Console.WriteLine($"({p.X}, {p.Y})");
         //}
-
-
-
-        //git upload test
     }
 }
