@@ -51,20 +51,32 @@ namespace DataRetrevialLib
             return output;
         }
 
-        
         // returns the score for the probability that the bitmap number is compareNumber
-        protected override double ComparePixelSet(int compareNumber, Point initialPoint, Bitmap bitmapOfNumbers)
+        protected override double ComparePixelSet(int compareNumber, int whiteNumber, Bitmap UCBitmap)
         {
-            double score = 0;
+            double match = 0;
+            double difference = whiteNumber;
 
             foreach(Point p in ReferenceNumbersList[compareNumber])
             {
-                if(bitmapOfNumbers.GetPixel(initialPoint.X + p.X, initialPoint.Y + p.Y).R > 200)
+                if(UCBitmap.GetPixel(p.X, p.Y).Equals(Color.White))
                 {
-                    score++;
+                    match++;
+                    difference--;
                 }
             }
-            return score / ReferenceNumbersList[compareNumber].Count;       
+
+            double score = match / ReferenceNumbersList[compareNumber].Count  - difference / whiteNumber;
+
+            if(score >= 0)
+            {
+                return score;
+            }
+            else
+            {
+                return 0.0;
+            }
         }
     }
 }
+

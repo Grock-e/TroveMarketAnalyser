@@ -41,6 +41,7 @@ namespace DataRetrevialLib
             }
         }
 
+        // TODO implemet change for method
         // returns the predicted char for specified position on the textBitmap
         protected char FindValueAtPosition(Point initialPoint, Bitmap textBitmap)
         {
@@ -49,7 +50,7 @@ namespace DataRetrevialLib
             double[] valueScores = new double[10];
             for (int i = 0; i < 10; i++)
             {
-                valueScores[i] = ComparePixelSet(i, initialPoint, textBitmap);
+                valueScores[i] = ComparePixelSet(i, );
             }
 
             if (valueScores.Max() == 0)
@@ -80,7 +81,7 @@ namespace DataRetrevialLib
         public abstract char[] FindValues(Point initialPoint, Bitmap screenBitmap);
 
         // abstract methods to be overwriten by Number and Price value reader
-        protected abstract double ComparePixelSet(int compareNumber, Point initialPoint, Bitmap screenBitmap);
+        protected abstract double ComparePixelSet(int compareNumber, int whiteNumber, Bitmap UCBitmap);
 
     }
 }
