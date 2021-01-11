@@ -23,6 +23,7 @@ namespace DataRetrevialLib
         /// <param name="initialScreenPoint">the upper left point on the screenBitmap from which a binary bitmap will be captured</param>
         /// <param name="screenBitmap">a bitmap of the screen</param>
         /// <returns>a char[] of the four Number character predicted to be contained in the bitmap</returns>
+        //TODO update this to work
         public override char[] FindValues(Point initialScreenPoint, Bitmap screenBitmap)
         {
             Bitmap binaryBitmapOfNumbers = GetBinaryBitmapOfText(initialScreenPoint, screenBitmap);
@@ -59,7 +60,7 @@ namespace DataRetrevialLib
 
             foreach(Point p in ReferenceNumbersList[compareNumber])
             {
-                if(UCBitmap.GetPixel(p.X, p.Y).Equals(Color.White))
+                if(UCBitmap.GetPixel(p.X, p.Y).R == 255)
                 {
                     match++;
                     difference--;

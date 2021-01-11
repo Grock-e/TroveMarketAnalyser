@@ -14,11 +14,11 @@ namespace tempDebugging
         {
             BitmapFormatter bitmapFormatter = new BitmapFormatter();
 
-            Image test = Image.FromFile(@"C:\Users\Ewen Sharpe\Desktop\Screenshot (51).png");
+            Image test = Image.FromFile(@"C:\Users\Ewen Sharpe\OneDrive\Desktop\NumerReferenceBitmap.png");
 
             test = bitmapFormatter.BinarizeImage(bitmapFormatter.ConvertToGrayScale((Bitmap)test, new Point(0, 0), test.Width, test.Height), 128);
             
-            test.Save(@"C:\Users\Ewen Sharpe\Desktop\bin.jpg");
+            test.Save(@"C:\Users\Ewen Sharpe\OneDrive\Desktop\bin.png");
 
             Console.WriteLine("done");
             Console.ReadLine();

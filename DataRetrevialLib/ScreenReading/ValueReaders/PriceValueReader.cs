@@ -20,7 +20,7 @@ namespace DataRetrevialLib
             throw new NotImplementedException();
         }
 
-        protected override double ComparePixelSet(int compareNumber, Point initialPoint, Bitmap screenBitmap)
+        protected override double ComparePixelSet(int compareNumber, int temp, Bitmap screenBitmap)
         {
             throw new NotImplementedException();
         }

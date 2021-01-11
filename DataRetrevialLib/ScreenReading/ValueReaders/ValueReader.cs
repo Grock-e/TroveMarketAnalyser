@@ -46,11 +46,30 @@ namespace DataRetrevialLib
         protected char FindValueAtPosition(Point initialPoint, Bitmap textBitmap)
         {
             char output = 'n';
-             
+
+
+            Bitmap UCBitmap = new Bitmap(18, 24);
+            int whiteCount = 0;
+            for(int i = 0; i < 18; i++)
+            {
+                for(int j = 0; j < 24; j++)
+                {
+                    Color pixelColor = textBitmap.GetPixel(initialPoint.X + i, j);
+                    UCBitmap.SetPixel(i, j, pixelColor);
+
+                    if(pixelColor.R == 255)
+                    {
+                        whiteCount++;
+                    }
+                }
+            }
+
+
+
             double[] valueScores = new double[10];
             for (int i = 0; i < 10; i++)
             {
-                valueScores[i] = ComparePixelSet(i, );
+                valueScores[i] = ComparePixelSet(i, whiteCount, UCBitmap);
             }
 
             if (valueScores.Max() == 0)
@@ -74,7 +93,7 @@ namespace DataRetrevialLib
         protected Bitmap GetBinaryBitmapOfText(Point startingPoint, Bitmap screenBitmap)
         {
             BitmapFormatter bitmapFormatter = new BitmapFormatter();
-            return bitmapFormatter.BinarizeImage(bitmapFormatter.ConvertToGrayScale(screenBitmap, startingPoint, 80, 23), 200);
+            return bitmapFormatter.BinarizeImage(bitmapFormatter.ConvertToGrayScale(screenBitmap, startingPoint, 80, 24), 200);
         }
 
         // abstract methods to be overwriten by Number and Price value reader

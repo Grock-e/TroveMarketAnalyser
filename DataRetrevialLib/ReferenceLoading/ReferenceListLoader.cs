@@ -19,7 +19,7 @@ namespace DataRetrevialLib
             List<Point>[] output = new List<Point>[10];
             for(int i = 0; i < 10; i++)
             {
-                output[i] = LoadKeyPoints(i, 17, referenceBitmap);
+                output[i] = LoadKeyPoints(i, 18, referenceBitmap);
             }
 
             return output;
@@ -34,7 +34,8 @@ namespace DataRetrevialLib
             {
                 for(int y = 0; y < referenceBitmap.Height; y++)
                 {
-                    if (referenceBitmap.GetPixel(x + desiredNumber*textWidth, y).R > 200)
+                    Color tenp = referenceBitmap.GetPixel(x + desiredNumber * textWidth, y);
+                    if (referenceBitmap.GetPixel(x + desiredNumber*textWidth, y).R == 255)
                     {
                         output.Add(new Point(x, y));
                     }
