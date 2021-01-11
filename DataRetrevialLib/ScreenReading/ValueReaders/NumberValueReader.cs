@@ -12,6 +12,19 @@ namespace DataRetrevialLib
 {
     public class NumberValueReader : ValueReader
     {
+        private int[,] MovementAmounts { get; set; } = new int[10,10] {{ }, 
+                                                        { }, 
+                                                        { }, 
+                                                        { }, 
+                                                        { }, 
+                                                        { }, 
+                                                        { },
+                                                        { }, 
+                                                        { }, 
+                                                        { }};
+
+
+
         public NumberValueReader(List<Point>[] referenceNumbersList)
         {
             ReferenceNumbersList = referenceNumbersList;
@@ -23,7 +36,7 @@ namespace DataRetrevialLib
         /// <param name="initialScreenPoint">the upper left point on the screenBitmap from which a binary bitmap will be captured</param>
         /// <param name="screenBitmap">a bitmap of the screen</param>
         /// <returns>a char[] of the four Number character predicted to be contained in the bitmap</returns>
-        //TODO update this to work
+        //TODO rome this method partially and replace with 2d array method
         public override char[] FindValues(Point initialScreenPoint, Bitmap screenBitmap)
         {
             Bitmap binaryBitmapOfNumbers = GetBinaryBitmapOfText(initialScreenPoint, screenBitmap);
