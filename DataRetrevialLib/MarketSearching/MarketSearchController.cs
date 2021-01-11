@@ -51,7 +51,7 @@ namespace DataRetrevialLib
             string[] output = new string[6];
 
             int count = 0;
-            Point p = new Point(996, 515);
+            Point p = new Point(994, 515);
             for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -62,7 +62,7 @@ namespace DataRetrevialLib
                     count++;
                     p = new Point(p.X + 425, p.Y);
                 }
-                p = new Point(996, p.Y + 542);
+                p = new Point(994, p.Y + 542);
             }
 
             return output;

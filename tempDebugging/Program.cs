@@ -14,7 +14,7 @@ namespace tempDebugging
         {
             BitmapFormatter bitmapFormatter = new BitmapFormatter();
 
-            Image test = Image.FromFile(@"C:\Users\Ewen Sharpe\OneDrive\Desktop\NumerReferenceBitmap.png");
+            Image test = Image.FromFile(@"C:\Users\Ewen Sharpe\OneDrive\Desktop\Reference.png");
 
             test = bitmapFormatter.BinarizeImage(bitmapFormatter.ConvertToGrayScale((Bitmap)test, new Point(0, 0), test.Width, test.Height), 128);
             

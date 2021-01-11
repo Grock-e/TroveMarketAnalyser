@@ -12,16 +12,16 @@ namespace DataRetrevialLib
 {
     public class NumberValueReader : ValueReader
     {
-        private int[,] MovementAmounts { get; set; } = new int[10,10] {{ }, 
-                                                        { }, 
-                                                        { }, 
-                                                        { }, 
-                                                        { }, 
-                                                        { }, 
-                                                        { },
-                                                        { }, 
-                                                        { }, 
-                                                        { }};
+        //private int[,] MovementAmounts { get; set; } = new int[10, 10] {{19, 20, 19, 19, 18, 20, 19, 19, 19, 19 }, //0
+        //                                                               {18, 19, 18, 18, 17, 19, 18, 18, 18, 18 }, //1
+        //                                                               {19, 20, 19, 19, 18, 20, 19, 19, 19, 19 }, //2
+        //                                                               {19, 20, 19, 19, 18, 20, 19, 19, 19, 19 }, //3
+        //                                                               {20, 21, 20, 20, 19, 21, 20, 20, 20, 20 }, //4
+        //                                                               {18, 19, 18, 18, 17, 19, 18, 18, 18, 18 }, //5
+        //                                                               {19, 20, 19, 19, 18, 20, 19, 19, 19, 19 }, //6
+        //                                                               {19, 20, 19, 19, 18, 20, 19, 19, 19, 19 }, //7
+        //                                                               {19, 20, 19, 19, 18, 20, 19, 19, 19, 19 }, //8
+        //                                                               {19, 20, 19, 19, 18, 20, 19, 19, 19, 19 }};//9
 
 
 
@@ -47,19 +47,7 @@ namespace DataRetrevialLib
             for (int i = 0; i < 4; i++)
             {
                 output[i] = FindValueAtPosition(initialPoint, binaryBitmapOfNumbers);
-
-                if (output[i] == '1' || output[i] == '5')
-                {
-                    initialPoint.X += 17;
-                }
-                else if (output[i] == '2' || output[i] == '6' || output[i] == '9')
-                {
-                    initialPoint.X += 19;
-                }
-                else
-                {
-                    initialPoint.X += 18;
-                }
+                initialPoint.X += 18;
             }
 
             return output;

@@ -34,7 +34,6 @@ namespace DataRetrevialLib
             {
                 for(int y = 0; y < referenceBitmap.Height; y++)
                 {
-                    Color tenp = referenceBitmap.GetPixel(x + desiredNumber * textWidth, y);
                     if (referenceBitmap.GetPixel(x + desiredNumber*textWidth, y).R == 255)
                     {
                         output.Add(new Point(x, y));

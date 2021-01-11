@@ -45,7 +45,7 @@ namespace DataRetrevialLib
         // returns the predicted char for specified position on the textBitmap
         protected char FindValueAtPosition(Point initialPoint, Bitmap textBitmap)
         {
-            char output = 'n';
+            char output = ' ';
 
 
             Bitmap UCBitmap = new Bitmap(18, 24);
@@ -93,7 +93,7 @@ namespace DataRetrevialLib
         protected Bitmap GetBinaryBitmapOfText(Point startingPoint, Bitmap screenBitmap)
         {
             BitmapFormatter bitmapFormatter = new BitmapFormatter();
-            return bitmapFormatter.BinarizeImage(bitmapFormatter.ConvertToGrayScale(screenBitmap, startingPoint, 80, 24), 200);
+            return bitmapFormatter.BinarizeImage(bitmapFormatter.ConvertToGrayScale(screenBitmap, startingPoint, 81, 24), 200);
         }
 
         // abstract methods to be overwriten by Number and Price value reader
