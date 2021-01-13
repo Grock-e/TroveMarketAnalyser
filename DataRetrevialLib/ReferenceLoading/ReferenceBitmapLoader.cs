@@ -9,8 +9,8 @@ namespace DataRetrevialLib
 {
     public class ReferenceBitmapLoader
     {
-        public const string PriceTextBitmapFilePath = @"ReferenceLoading\TextReferences\PriceTextReference.bmp";
-        public const string NumberTextBitmapFilePath = @"ReferenceLoading\TextReferences\bin.png";
+        public const string PriceTextBitmapFilePath = @"ReferenceLoading\TextReferences\PriceTextReference.png";
+        public const string NumberTextBitmapFilePath = @"ReferenceLoading\TextReferences\NumberTextReference.png";
         
         /// <summary>
         /// 

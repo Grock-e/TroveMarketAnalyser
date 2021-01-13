@@ -55,10 +55,6 @@
       <Project>{618ac425-05ce-45a1-be99-1475a0bbe944}</Project>
       <Name>DataRetrevialLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OCRLib\OCRLib.csproj">
-      <Project>{3abf0824-8c38-4c8b-808c-94485382d0ed}</Project>
-      <Name>OCRLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

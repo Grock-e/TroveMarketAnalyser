@@ -101,7 +101,7 @@ namespace DataRetrevialLib
                 valueScores[i] = ComparePixelSet(referenceList, i, whiteCount, UCBitmap);
             }
 
-            if (valueScores.Max() == 0)
+            if (valueScores.Max() < 0.5)
             {
                 return output;
             }

@@ -13,7 +13,7 @@ namespace DataRetrevialLib
     {
         private MarketSearcher MS { get; set; } = new MarketSearcher();
         private NumberValueReader NVR { get; set; }
-        //private PriceValueReader PVR { get; set; }
+        private PriceValueReader PVR { get; set; }
 
         public MarketSearchController()
         {
@@ -23,8 +23,8 @@ namespace DataRetrevialLib
             NVR = new NumberValueReader(referenceListLoader.LoadReferenceNumberPoints(
                 referenceBitmapLoader.LoadNumberReferenceBitmap()));
 
-            // = new PriceValueReader(referenceListLoader.LoadReferenceNumberPoints(
-             //   referenceBitmapLoader.LoadPriceReferenceBitmap()));
+            PVR = new PriceValueReader(referenceListLoader.LoadReferenceNumberPoints(
+                referenceBitmapLoader.LoadPriceReferenceBitmap()));
         }
 
         public delegate void StoreCollectedItemData(string item, List<string> itemPriceList, List<string> itemNumberList);
@@ -46,27 +46,26 @@ namespace DataRetrevialLib
             }
         }
 
-        private string[] ReadPageNumbers(Bitmap screenBitmap)
+        private string[] ReadPageTexts(Bitmap screenBitmap, Point initialPoint, ValueReader valueReader)
         {
             string[] output = new string[6];
 
+            Point p = initialPoint;
             int count = 0;
-            Point p = new Point(994, 515);
-            for (int i = 0; i < 2; i++)
+            for(int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for(int j = 0; j < 3; j++)
                 {
-                    string numberText = CharToString(NVR.FindValues(p, screenBitmap));
-                    output[count] = numberText;
+                    string priceText = CharToString(valueReader.FindValues(p, screenBitmap));
+                    output[count] = priceText;
 
                     count++;
-                    p = new Point(p.X + 425, p.Y);
+                    p = new Point(p.X + 425, initialPoint.Y);
                 }
-                p = new Point(994, p.Y + 542);
+                p = new Point(initialPoint.X, p.Y + 542);
             }
 
             return output;
-
         }
 
         private string CharToString(char[] chars)
@@ -101,8 +100,9 @@ namespace DataRetrevialLib
             {
                 Thread.Sleep(80);
                 Bitmap screenBitmap = screenBitmapCreator.CreateScreenBitmap();
-                string[] pageNumbers = ReadPageNumbers(screenBitmap);
-                string[] pagePrices = { "-", "-", "-", "-", "-", "-", "-" };
+
+                string[] pageNumbers = ReadPageTexts(screenBitmap, new Point(994, 515), NVR);
+                string[] pagePrices = ReadPageTexts(screenBitmap, new Point(1089, 599), PVR);
 
                 for (int i = 0; i < 6; i++)
                 {
