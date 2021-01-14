@@ -105,6 +105,7 @@ namespace DataRetrevialLib
                 string[] pageNumbers = ReadPageTexts(screenBitmap, new Point(994, 515), NVR);
                 string[] pagePrices = ReadPageTexts(screenBitmap, new Point(1089, 599), PVR);
 
+
                 for (int i = 0; i < 6; i++)
                 {
                     allItemNumbers.Add(pageNumbers[i]);
