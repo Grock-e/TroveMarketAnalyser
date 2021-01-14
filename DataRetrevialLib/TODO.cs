@@ -1,12 +1,7 @@
-﻿/*
- * Classes to be cleaned up:
-     * 
-     * MarketSearchController
-     * MarketSearcher
-     * 
-     * ExcelFileLoader
-     * ExcelModel
-     * StorageManager
- * 
+﻿/*    
+ * fix screenshot bitmap method
+ * apply multithreaded screen reading
+ * clean up and comment code
+ * build application
  */
 
