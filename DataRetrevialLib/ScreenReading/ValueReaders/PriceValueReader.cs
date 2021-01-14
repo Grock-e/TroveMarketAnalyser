@@ -19,7 +19,6 @@ namespace DataRetrevialLib
 
         public override char[] FindValues(Point initialScreenPoint, Bitmap screenBitmap)
         {
-            //GetBinaryBitmapOfText(initialScreenPoint, screenBitmap).Save(@"C:\Users\Ewen Sharpe\OneDrive\Desktop\binarycheck.png");
 
             Bitmap binaryBitmapOfPrices = GetBinaryBitmapOfText(initialScreenPoint, screenBitmap);
             
@@ -31,8 +30,10 @@ namespace DataRetrevialLib
             for (int i = 7; i >= 0; i--)
             {
                 //CreateCharacterBitmap(binaryBitmapOfPrices, xPositions[i], 18, 24, out _).Save($@"C:\Users\Ewen Sharpe\OneDrive\Desktop\check{8-i}.png");
+                Bitmap characterBitmap = CreateCharacterBitmap(binaryBitmapOfPrices, xPositions[i], 18, 24, out int whiteCount);
+                final = FindValueAtPosition(ReferencePricesList, characterBitmap, whiteCount);
+                characterBitmap.Dispose();
 
-                final = FindValueAtPosition(ReferencePricesList, CreateCharacterBitmap(binaryBitmapOfPrices, xPositions[i], 18, 24, out int whiteCount), whiteCount);
                 if (final != ' ')
                 {
                     count = i;
@@ -57,9 +58,10 @@ namespace DataRetrevialLib
                     initialX = 0;
                 }
 
-                //CreateCharacterBitmap(binaryBitmapOfPrices, initialX, 18, 24, out _).Save($@"C:\Users\Ewen Sharpe\OneDrive\Desktop\numcheck{count - i}.png");
+                Bitmap characterBitmap = CreateCharacterBitmap(binaryBitmapOfPrices, initialX, 18, 24, out int whiteCount);
+                output[i] = FindValueAtPosition(ReferencePricesList, characterBitmap, whiteCount);
+                characterBitmap.Dispose();
 
-                output[i] = FindValueAtPosition(ReferencePricesList, CreateCharacterBitmap(binaryBitmapOfPrices, initialX, 18, 24, out int whiteCount), whiteCount);
                 threeCount++;
 
                 if (threeCount % 3 == 0)
@@ -70,6 +72,8 @@ namespace DataRetrevialLib
 
                 
             }
+
+            binaryBitmapOfPrices.Dispose();
 
             return output;
         }

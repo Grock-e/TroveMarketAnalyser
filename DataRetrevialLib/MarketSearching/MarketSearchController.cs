@@ -99,6 +99,7 @@ namespace DataRetrevialLib
             do
             {
                 Thread.Sleep(80);
+
                 Bitmap screenBitmap = screenBitmapCreator.CreateScreenBitmap();
 
                 string[] pageNumbers = ReadPageTexts(screenBitmap, new Point(994, 515), NVR);
@@ -115,6 +116,8 @@ namespace DataRetrevialLib
 
 
                 MS.GoToNextPage();
+
+                screenBitmap.Dispose();
             } while (isNextPage);
 
             storeCollectedItemData(item, allItemPrices, allItemNumbers);

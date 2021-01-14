@@ -34,9 +34,14 @@ namespace DataRetrevialLib
             char[] output = new char[4];
             for (int i = 0; i < 4; i++)
             {
-                output[i] = FindValueAtPosition(ReferenceNumbersList, CreateCharacterBitmap(binaryBitmapOfNumbers, initialX, 18, 24, out int whiteCount), whiteCount);
+                Bitmap characterBitmap = CreateCharacterBitmap(binaryBitmapOfNumbers, initialX, 18, 24, out int whiteCount);
+                output[i] = FindValueAtPosition(ReferenceNumbersList, characterBitmap, whiteCount);
+                characterBitmap.Dispose();
+
                 initialX += 18;
             }
+
+            binaryBitmapOfNumbers.Dispose();
 
             return output;
         }
